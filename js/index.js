@@ -2,6 +2,7 @@ var HOME = new naver.maps.LatLng(37.3595953, 127.1053971);
 
 var markers = [],
     infoWindows = [];
+    placeList = [];
 
 // search object - KAKAO API
 var ps = new kakao.maps.services.Places();
@@ -78,7 +79,7 @@ function displayPlaces(places) {
         });
 
         infoWindows.push(infoWindow);
-
+        placeList.push(places[i].place_name);
         fragment.appendChild(itemEl);
     }
 
@@ -89,6 +90,7 @@ function displayPlaces(places) {
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     //map.setBounds(bounds);
+    map.morph(bounds.getCenter(), 15);
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -121,8 +123,11 @@ function getListItem(index, places) {
             infoWindow.open(map, marker);
         }
     });
-    el.addEventListener("mouseout", function () {
-        infoWindow.close();
+    // el.addEventListener("mouseout", function () {
+    //     infoWindow.close();
+    // });
+    el.addEventListener("click", function() {
+        alert(places.place_name);
     });
 
     return el;
@@ -166,10 +171,18 @@ function getMouseOutHandler(seq) {
     }
 }
 
+function getOnClickHandler(seq) {
+    return function (e) {
+        alert(placeList[seq]);
+        console.log(seq);
+    }
+}
+
 function setupHandler() {
     for (var i = 0, ii = markers.length; i < ii; i++) {
         naver.maps.Event.addListener(markers[i], 'mouseover', getMouseOverHandler(i));
         naver.maps.Event.addListener(markers[i], 'mouseout', getMouseOutHandler(i));
+        naver.maps.Event.addListener(markers[i], 'click', getOnClickHandler(i));
     }
 }
 

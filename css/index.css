@@ -83,3 +83,20 @@ ul {margin:0; padding-left:3%;}
 #pagination {margin:20px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+#weather {
+  position: absolute;
+  width: 7%;
+  height: 6%;
+  top: 6%;
+  right: 0;
+  z-index: 999999;
+}
+
+#city {
+  display: inline-block;
+}
+
+.child {
+  display: inline-block;
+}
