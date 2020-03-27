@@ -1,4 +1,4 @@
-const API_KEY="#";
+const API_KEY="80c37ea7c77eaf606bdb9b0e2b925a6a";
 const COORDS="coords";
 
 function getWeather(lat, lng) {
@@ -12,8 +12,8 @@ function getWeather(lat, lng) {
     .then(function(json){
         let tempK = json.main.temp;
         const tempC = (tempK-273.15).toFixed(1);
-        console.log(json);
-        console.log(tempC+"°C");
+        //console.log(json);
+        //console.log(tempC+"°C");
         let cityName = (json.name).replace("-si","");
         cityName = cityName.replace(/^./, cityName[0].toUpperCase());
         let weatherDesc = json.weather[0].description;
@@ -35,6 +35,7 @@ function handleGeoSuccess(position) {
         latitude,
         longitude
     };
+
     saveCoords(coordsObj);
     getWeather(latitude, longitude);
 }
@@ -47,19 +48,14 @@ function askLocation() {
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
 }
 
-function checkLocation() {
-    navigator.geolocation.getCurrentPosition();
-}
-
 function loadCoords() {
-    const geolocation = localStorage.getItem(COORDS);
-    if(geolocation === null) {
-        askLocation();
-    } else {
-        const parseCoords = JSON.parse(geolocation);
-        getWeather(parseCoords.latitude, parseCoords.longitude);
-        console.log(parseCoords);
-    }
+    // const geolocation = localStorage.getItem(COORDS);
+    // if(geolocation === null) {
+    //     askLocation();
+    // } else {
+    //     askLocation();
+    // }
+    askLocation();
 }
 
 function init() {

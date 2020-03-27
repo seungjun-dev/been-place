@@ -8,9 +8,13 @@
 }
 
 #title {
-  color: white;
   font-size: x-large;
   line-height: 50px;
+}
+
+#title > a {
+  text-decoration: none;
+  color: white;
 }
 
 #map {
@@ -99,4 +103,5 @@ ul {margin:0; padding-left:3%;}
 
 .child {
   display: inline-block;
+  color: #FFFFFF;
 }

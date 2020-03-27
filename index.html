@@ -8,12 +8,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <title>Been Place</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=#"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wn7765k9ye"></script>
     <!-- 네이버 API 사용을 위한 script코드-->
     <script type="text/javascript"
-        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=#&submodules=visualization"></script>
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wn7765k9ye&submodules=visualization"></script>
     <!-- 네이버 API 사용(submodule)을 위한 script코드-->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=#&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=433d7897f7a99955a2747a9f446c709f&libraries=services"></script>
     <!-- 카카오 API 사용을 위한 script코드-->
     <!-- 부트스트랩 css/js -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
@@ -21,14 +21,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!-- 로컬 css/js -->
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
 </head>
 
 <body style="height:100%; margin:0px;">
     <!-- Top Navigation Bar-->
+    <div id="popup"></div>
     <div id="topNav">
         <span id="title">
-            Been Place
+            <a href="./index.html">Been Place</a>
         </span>
+        <div id="weather">
+            <div id="city">
+                <span id="name" class="child"></span>
+                <span id="temp" class="child"></span>
+            </div>
+            <div id="desc" class="child"></div>
+        </div>
     </div>
     <!-- End Top Navigation Bar-->
     <div class="search option">
@@ -42,16 +51,10 @@
         <div id="pagination"></div>
     </div>
     <!-- End Search Div-->
-    <div id="weather">
-        <div id="city">
-            <span id="name" class="child"></span>
-            <span id="temp" class="child"></span>
-        </div>
-        <div id="desc"></div>
-    </div>
     <div id="map"></div>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/layerpopup.js"></script>
 </body>
 
 </html>

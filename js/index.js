@@ -84,13 +84,13 @@ function displayPlaces(places) {
     }
 
     setupHandler();
-    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+    // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
     listEl.appendChild(fragment);
     menuEl.scrollTop = 0;
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     //map.setBounds(bounds);
-    map.morph(bounds.getCenter(), 15);
+    map.morph(bounds.getCenter(), 10);
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -127,7 +127,8 @@ function getListItem(index, places) {
     //     infoWindow.close();
     // });
     el.addEventListener("click", function() {
-        alert(places.place_name);
+        //alert(places.place_name);
+        popup(places.place_name)
     });
 
     return el;
@@ -173,8 +174,8 @@ function getMouseOutHandler(seq) {
 
 function getOnClickHandler(seq) {
     return function (e) {
-        alert(placeList[seq]);
-        console.log(seq);
+        //alert(placeList[seq]);
+        popup(placeList[seq]);
     }
 }
 
