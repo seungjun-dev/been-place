@@ -2,7 +2,7 @@ var HOME = new naver.maps.LatLng(37.3595953, 127.1053971);
 
 var markers = [],
     infoWindows = [];
-    placeList = [];
+placeList = [];
 
 // search object - KAKAO API
 var ps = new kakao.maps.services.Places();
@@ -113,20 +113,8 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
-    el.addEventListener("mouseover", function () {
-        var marker = markers[index],
-            infoWindow = infoWindows[index];
 
-        if (infoWindow.getMap()) {
-            infoWindow.close();
-        } else {
-            infoWindow.open(map, marker);
-        }
-    });
-    // el.addEventListener("mouseout", function () {
-    //     infoWindow.close();
-    // });
-    el.addEventListener("click", function() {
+    el.addEventListener("click", function () {
         //alert(places.place_name);
         popup(places.place_name)
     });
@@ -150,25 +138,41 @@ function addMarker(position, idx, title) {
     return marker;
 }
 
+var markerContent = [
+    '<div style="position:absolute;">',
+    '<div class="infowindow" style="display:none;position:absolute;height:10px;top:-46px;left:-100px;background-color:white;z-index:1;border:1px solid black;margin:0;padding:0;">',
+    '</div>',
+    '</div>'
+].join(''),
+    htmlMarker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(37.3560258, 127.10203),
+        visible: false,
+        map: map,
+        icon: {
+            content: markerContent,
+            size: new naver.maps.Size(22, 30),
+            anchor: new naver.maps.Point(11, 30)
+        }
+    }),
+    elHtmlMarker = htmlMarker.getElement();
+
 // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
 function getMouseOverHandler(seq) {
     return function (e) {
-        var marker = markers[seq],
-            infoWindow = infoWindows[seq];
-
-        if (infoWindow.getMap()) {
-            infoWindow.close();
-        } else {
-            infoWindow.open(map, marker);
-        }
+        htmlMarker.setIcon({
+            content: '<div style="position:absolute;">'
+                + '<div style="white-space:nowrap;font-size:12px;text-align:center;padding:5px;border-width:2px;border-style:solid;border-color:#338DFF;border-radius:4px;z-index:9999;background-color:white;position:absolute;top:-35px;left:15px;">' + placeList[seq] + '</div>'
+                + '</div>'
+        });
+        htmlMarker.setVisible(true);
+        htmlMarker.setPosition(markers[seq].getPosition());
+        $(elHtmlMarker).find('.infowindow').show();
     }
 }
 
 function getMouseOutHandler(seq) {
     return function (e) {
-        var infoWindow = infoWindows[seq];
-
-        infoWindow.close();
+        $(elHtmlMarker).find('.infowindow').hide();
     }
 }
 
