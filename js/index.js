@@ -89,8 +89,10 @@ function displayPlaces(places) {
     menuEl.scrollTop = 0;
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    //map.setBounds(bounds);
-    map.morph(bounds.getCenter(), 10);
+    // map.morph(bound.getCenter, zoom)
+    // bounds.getCenter() -> bounds 값들의 중간 값
+    // zoom -> 지도 확대 정도
+    map.morph(bounds.getCenter(), 15);
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -131,7 +133,6 @@ function addMarker(position, idx, title) {
         position: position,
         zIndex: 100
     });
-
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
 

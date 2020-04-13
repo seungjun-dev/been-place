@@ -7,4 +7,5 @@ function popup(placeName) {
 
     popup.innerText=content;
     popup.style.display='block';
-}
+    //Test 
+}  
