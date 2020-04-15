@@ -1,0 +1,62 @@
+<!-- https://github.com/seungjun-dev/been-place.git -->
+<!DOCTYPE html>
+<html style="height:100%;">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Been Place</title>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wn7765k9ye"></script>
+    <!-- 네이버 API 사용을 위한 script코드-->
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wn7765k9ye&submodules=visualization"></script>
+    <!-- 네이버 API 사용(submodule)을 위한 script코드-->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=433d7897f7a99955a2747a9f446c709f&libraries=services"></script>
+    <!-- 카카오 API 사용을 위한 script코드-->
+    <!-- 부트스트랩 css/js -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- 로컬 css/js -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+</head>
+
+<body style="height:100%; margin:0px;">
+    <!-- Top Navigation Bar-->
+    <div id="popup"></div>
+    <div id="topNav">
+        <span id="title">
+            <a href="./main.html">Been Place</a>
+        </span>
+        <div id="weather">
+            <div id="city">
+                <span id="name" class="child"></span>
+                <span id="temp" class="child"></span>
+            </div>
+            <div id="desc" class="child"></div>
+        </div>
+    </div>
+    <!-- End Top Navigation Bar-->
+    <div class="search option">
+        <form>
+            <input id="searchInput" class="form-control" type="text" placeholder="Where have you been?"
+                onkeypress="javascript:if(event.keyCode == 13){searchPlaces(); return false;}" />
+        </form>
+    </div>
+    <div id="menu_wrap" class="bg_white">
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
+    </div>
+    <!-- End Search Div-->
+    <div id="map"></div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/layerpopup.js"></script>
+</body>
+
+</html>
