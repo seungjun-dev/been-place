@@ -63,4 +63,10 @@
 
 #bgName {
     color: #FFFFFF;
+    font-size: large;
+}
+
+#bgDesc {
+    color: #FFFFFF;
+    font-size: small;
 }
