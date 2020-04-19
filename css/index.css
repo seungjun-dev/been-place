@@ -55,3 +55,12 @@
 .btnGroup {
     text-align: center;
 }
+
+.footer {
+    position: absolute;
+    bottom: 1%;
+}
+
+#bgName {
+    color: #FFFFFF;
+}
