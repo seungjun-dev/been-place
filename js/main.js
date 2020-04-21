@@ -1,8 +1,8 @@
 var HOME = new naver.maps.LatLng(37.3595953, 127.1053971);
 
 var markers = [],
-    infoWindows = [];
-placeList = [];
+    infoWindows = [],
+    placeList = [];
 
 // search object - KAKAO API
 var ps = new kakao.maps.services.Places();
@@ -79,7 +79,7 @@ function displayPlaces(places) {
         });
 
         infoWindows.push(infoWindow);
-        placeList.push(places[i].place_name);
+        placeList.push(places[i]);
         fragment.appendChild(itemEl);
     }
 
@@ -97,7 +97,7 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-
+    
     var el = document.createElement('li'),
         itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
             '<div class="info">' +
@@ -118,7 +118,8 @@ function getListItem(index, places) {
 
     el.addEventListener("click", function () {
         //alert(places.place_name);
-        popup(places.place_name)
+        console.log("places: "+places);
+        popup(places);
     });
 
     return el;
@@ -162,7 +163,7 @@ function getMouseOverHandler(seq) {
     return function (e) {
         htmlMarker.setIcon({
             content: '<div style="position:absolute;">'
-                + '<div style="white-space:nowrap;font-size:12px;text-align:center;padding:5px;border-width:2px;border-style:solid;border-color:#338DFF;border-radius:4px;z-index:9999;background-color:white;position:absolute;top:-35px;left:15px;">' + placeList[seq] + '</div>'
+                + '<div style="white-space:nowrap;font-size:12px;text-align:center;padding:5px;border-width:2px;border-style:solid;border-color:#338DFF;border-radius:4px;z-index:9999;background-color:white;position:absolute;top:-35px;left:15px;">' + placeList[seq].place_name + '</div>'
                 + '</div>'
         });
         htmlMarker.setVisible(true);
@@ -180,6 +181,7 @@ function getMouseOutHandler(seq) {
 function getOnClickHandler(seq) {
     return function (e) {
         //alert(placeList[seq]);
+        console.log("placeList: "+placeList[seq]);
         popup(placeList[seq]);
     }
 }

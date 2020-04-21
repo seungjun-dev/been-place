@@ -7,4 +7,9 @@
     position: absolute;
     top: 10%;
     right: 2%;
+    border-radius: 1%;
+}
+
+.wrapper {
+    padding: 2% 3% 0 3%;
 }
