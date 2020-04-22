@@ -3,12 +3,14 @@ function popup(place) {
     var popup = document.getElementById('popup');
 
     var content = '<div class="wrapper">';
-    content += '<h2 class="title">'+place.place_name+'</h2>';
-    content += '<h5 class="roadName">'+place.road_address_name+'</h5>';
+    content += '<div class="header"><span class="title">'+place.place_name+'</span><a href="'+place.place_url+'"><img id="link" src="../image/link.png"/></a><br>';
+    content += '<span class="roadName">'+place.road_address_name+'</span>';
     if(place.phone!="") {
-        content += '<h6 class="phone">'+place.phone+'</h6>';
+        content += ' / <span class="phone">'+place.phone+'</span>';
     }
-    content += '<hr>';
+    content += '</div><hr>';
+    content += '<div class="pics"></div>';
+    content += '<div class="reviews"></div>';
     content += '</div>';
 
     //innerHTML -> html 태그 인식 가능

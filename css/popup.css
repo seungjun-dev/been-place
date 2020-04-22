@@ -13,3 +13,25 @@
 .wrapper {
     padding: 2% 3% 0 3%;
 }
+
+.header {
+    display: inline-block;
+}
+
+.title {
+    font-size: x-large;
+}
+
+.roadName {
+    font-size: small;
+}
+
+.phone {
+    font-size: smaller;
+}
+
+#link {
+    width: 20px;
+    padding-left: 2%;
+    padding-bottom: 3%;
+}
